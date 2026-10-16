@@ -1,0 +1,61 @@
+{
+  "texture": "../weathered-atlas.svg",
+  "uv": "Each primitive includes explicit vt coordinates; box faces use 0–1 UV, cylinders unwrap around Y. All use the tiling weathered atlas.",
+  "models": [
+    {
+      "name": "knight",
+      "file": "knight.obj",
+      "triangles": 252
+    },
+    {
+      "name": "zombie-armored",
+      "file": "zombie-armored.obj",
+      "triangles": 240
+    },
+    {
+      "name": "zombie-rags",
+      "file": "zombie-rags.obj",
+      "triangles": 156
+    },
+    {
+      "name": "skeleton",
+      "file": "skeleton.obj",
+      "triangles": 260
+    },
+    {
+      "name": "iron-sword",
+      "file": "iron-sword.obj",
+      "triangles": 44
+    },
+    {
+      "name": "shield",
+      "file": "shield.obj",
+      "triangles": 48
+    },
+    {
+      "name": "fire-book",
+      "file": "fire-book.obj",
+      "triangles": 60
+    },
+    {
+      "name": "healing-book",
+      "file": "healing-book.obj",
+      "triangles": 60
+    },
+    {
+      "name": "oak",
+      "file": "oak.obj",
+      "triangles": 184
+    },
+    {
+      "name": "grass",
+      "file": "grass.obj",
+      "triangles": 30
+    },
+    {
+      "name": "campfire",
+      "file": "campfire.obj",
+      "triangles": 360
+    }
+  ]
+}
