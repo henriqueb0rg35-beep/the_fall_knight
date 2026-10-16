@@ -1,11 +1,12 @@
 import * as T from 'three';
+import {importedSword} from './imported-sword.js';
 const palette={iron:0x707978,dark:0x303e40,rust:0x735443,cloth:0x504b3d,skin:0x899078,bone:0xc3b99c,bark:0x403b30,leaf:0x263d32,gold:0x9e8245};
 let atlas=null;
 export function setAtlas(t){atlas=t;}
 const mat=(c)=>new T.MeshStandardMaterial({color:palette[c]??c,flatShading:true,roughness:.96,map:atlas});
 function part(g,geo,c,x,y,z,rx=0,rz=0){const m=new T.Mesh(geo,mat(c));m.position.set(x,y,z);m.rotation.set(rx,0,rz);m.castShadow=true;m.receiveShadow=true;g.add(m);return m;}
 function box(g,w,h,d,c,x=0,y=0,z=0,rz=0){return part(g,new T.BoxGeometry(w,h,d),c,x,y,z,0,rz);}
-export function sword(){const g=new T.Group();box(g,.09,.85,.045,'iron',0,.35,0);part(g,new T.ConeGeometry(.065,.22,4),'iron',0,.88,0);box(g,.4,.06,.09,'gold',0,-.1,0);box(g,.08,.28,.08,'cloth',0,-.25,0);return g;}
+export function sword(){return importedSword();}
 export function shield(){const g=new T.Group();const s=part(g,new T.CylinderGeometry(.34,.23,.08,6),'dark',0,0,0,Math.PI/2);s.rotation.z=Math.PI/6;box(g,.05,.5,.11,'iron');box(g,.4,.04,.11,'iron');return g;}
 export function book(type='fire'){const g=new T.Group();box(g,.34,.43,.12,type==='fire'?0x7e3525:0x345b43);box(g,.28,.36,.13,0xc0ae7d);box(g,.34,.43,.025,type==='fire'?0x7e3525:0x345b43,0,0,.08);box(g,.05,.22,.03,'gold',0,0,.1);box(g,.18,.05,.03,'gold',0,0,.1);return g;}
 export function humanoid(type='knight'){

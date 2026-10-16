@@ -1,6 +1,6 @@
 # The Fall Knight
 
-Protótipo jogável 3D de fantasia medieval sombria para navegador desktop com WebGL. Arte original low-poly inspirada na época PS2; nenhum recurso de jogos comerciais foi extraído ou incluído.
+Protótipo jogável 3D de fantasia medieval sombria para navegador desktop com WebGL. Arte low-poly inspirada na época PS2, com espada OBJ fornecida pelo usuário; nenhum recurso de jogos comerciais foi extraído ou incluído.
 
 ## Executar
 
@@ -44,7 +44,7 @@ Vida, mana e stamina: máximo 100. Espada: 28 de dano e 5 de stamina por golpe. 
 
 ## Arte e UV
 
-`src/models.js` contém modelos hierárquicos originais: cavaleiro com placas e riscos de ferrugem, zumbi de armadura, zumbi de farrapos, esqueleto, espada, escudo, livros, carvalho, grama e fogueira. Animação procedural dos membros.
+`src/models.js` contém modelos hierárquicos procedurais e a integração da espada enviada: cavaleiro com placas e riscos de ferrugem, zumbi de armadura, zumbi de farrapos, esqueleto, espada, escudo, livros, carvalho, grama e fogueira. Animação procedural dos membros.
 
 `public/assets/weathered-atlas.svg` é uma textura original de 128×128 com desgaste procedural e arranhões. Aplicada com filtragem nearest e cores próprias de cada material. As primitivas incluem coordenadas UV explícitas (faces de caixas 0–1, cilindros desenrolados no eixo Y).
 
@@ -66,3 +66,11 @@ O smoke usa `/usr/bin/chromium`; use `CHROMIUM_PATH` para outro caminho. Valida 
 ## Escopo atual
 
 Protótipo inicial single-player: sem áudio, persistência de progresso, multiplayer ou suporte a toque. Colisão com árvores e limites do mapa; a câmera de terceira pessoa é uma visualização simples e pode atravessar objetos. Recursos artísticos são estilizados e procedurais, não reproduções fiéis de personagens comerciais. Fontes remotas são opcionais; há fallback local.
+
+## Espada enviada pelo usuário
+
+`public/assets/imported/Sword.obj` preserva o arquivo recebido. Seus sete componentes e UVs são mantidos; a altura foi normalizada para 1,30 m e o ponto da empunhadura ajustado para as mãos existentes. Como o `Sword.mtl` e texturas não foram enviados, cores de aço, couro e metal envelhecido são aplicadas pelo jogo.
+
+`node scripts/prepare-sword.mjs` reconstrói `src/assets/sword.json`. `src/imported-sword.js` compartilha geometria entre instâncias com transformações independentes. A espada funciona na primeira e terceira pessoa, nas duas mãos, e usa a animação de golpe e regras de combate existentes. A terceira pessoa agora exibe os equipamentos nas mãos.
+
+O `Knighty.obj` ainda não foi integrado: o arquivo anexado excedeu o limite de transferência de 32 MiB. O cavaleiro procedural anterior permanece até que uma versão compactada ou reduzida possa ser inspecionada e preparada para animação. Não há suposição de rig ou animação em um arquivo OBJ.
